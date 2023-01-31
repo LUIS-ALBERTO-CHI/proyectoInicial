@@ -35,14 +35,14 @@ class _MyTabBarState extends State with SingleTickerProviderStateMixin {
         elevation: 0,
         toolbarHeight: 80,
         title: Image.asset('images/logo.png', height: 90, width: 120,),
+        
         backgroundColor: Colors.transparent,
         
       ),
-      
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal:20),
-          child: Container(
+          child: SizedBox(
             height: MediaQuery.of(context).size.height,
             child: Column(
               children: [

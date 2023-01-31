@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:liga_corner_app/core/info_notificaciones.dart';
-
-import '../widgets/nav_bar.dart';
+import 'package:liga_corner_app/widgets/nav_bar.dart';
 
 class MyNotification extends StatelessWidget {
   final List<InfoNotificaciones> _Info = [
@@ -23,8 +22,8 @@ class MyNotification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:const Color(0xFFE8E8E8),
       appBar: AppBar(
-       
         // actions: [
         //   TextButton(
         //     onPressed: () {
@@ -37,38 +36,55 @@ class MyNotification extends StatelessWidget {
         // ],
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: 
-            const Center(
-              child: Text(
-          'Notificaciones',
-          style: TextStyle(
-              color: Color(0xFF595959),
-          ),
-        ),
-        
+        title:const Center(
+          child: Text(
+              'Notificaciones',
+              style: TextStyle(
+                color: Color(0xFF595959),
+              ),
             ),
+        ),
+      
+
         // leading: IconButton(
         //   icon: const Icon(Icons.arrow_back, color: Color(0xFF4ECF84)),
         //   onPressed: () {
-        //     Navigator.push(
-        //     context,
-        //     MaterialPageRoute(builder: (context) => const NavigationExample()),
-        //     );
+        //     const NavigationExample();
         //   },
         // ),
       ),
       body: ListView.builder(
+        
         padding: const EdgeInsets.symmetric(vertical: 20),
         itemCount: _Info.length,
         itemBuilder: ((context, index) {
           return ListTile(
-            
-            onLongPress: () {
-              Colors.amber;
-            },
+            onLongPress: () => showDialog<String>(
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                  elevation: 10,
+                  title: const Text(' Eliminar Notificacion'),
+                  content: const Text('¿Deseas Eliminar esta notificacion?',
+                      style: TextStyle(color: Color(0xFF595959))),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, 'Cancel'),
+                      child: const Text('Cancel',
+                          style: TextStyle(color: Color(0xFF4ECF84))),
+                    ),
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, 'Delete'),
+                      child: const Text(
+                        'Eliminar',
+                        style: TextStyle(color: Color(0xFF4ECF84)),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             title: Text(_Info[index].name),
-            subtitle: Text(_Info[index].description, 
-            style: const TextStyle(color: Color(0xFF595959))),
+            subtitle: Text(_Info[index].description,
+                style: const TextStyle(color: Color(0xFF595959))),
             leading: CircleAvatar(
               backgroundColor: const Color(0xFF4ECF84),
               child: Text(
@@ -76,33 +92,35 @@ class MyNotification extends StatelessWidget {
                 style: const TextStyle(color: Colors.white),
               ),
             ),
-            trailing: IconButton(
-        
-              onPressed: () => showDialog<String>(
-              context: context,
-              builder: (BuildContext context) => AlertDialog(
-              elevation: 10,
-              title: const Text(' Eliminar Notificacion'),
-              content: const Text('¿Deseas Eliminar esta notificacion?',
-              style: TextStyle(color: Color(0xFF595959))),
-              actions: <Widget>[
-            TextButton(
-              
-              onPressed: () => Navigator.pop(context, 'Cancel'),
-              child: const Text('Cancel',style: TextStyle(color: Color(0xFF4ECF84))),
-            ),
-            TextButton(
-              onPressed: () => Navigator.pop(context, 'Delete'),
-              child: const Text('Eliminar', 
-              style: TextStyle(color: Color(0xFF4ECF84)),),
-            ),
-          ],
-        ),
-      ),
-              icon: const Icon(Icons.delete, 
-              color:Color(0xFF4ECF84),
-              ),
-              ),
+            // trailing: IconButton(
+            //   onPressed: () => showDialog<String>(
+            //     context: context,
+            //     builder: (BuildContext context) => AlertDialog(
+            //       elevation: 10,
+            //       title: const Text(' Eliminar Notificacion'),
+            //       content: const Text('¿Deseas Eliminar esta notificacion?',
+            //           style: TextStyle(color: Color(0xFF595959))),
+            //       actions: <Widget>[
+            //         TextButton(
+            //           onPressed: () => Navigator.pop(context, 'Cancel'),
+            //           child: const Text('Cancel',
+            //               style: TextStyle(color: Color(0xFF4ECF84))),
+            //         ),
+            //         TextButton(
+            //           onPressed: () => Navigator.pop(context, 'Delete'),
+            //           child: const Text(
+            //             'Eliminar',
+            //             style: TextStyle(color: Color(0xFF4ECF84)),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            //   icon: const Icon(
+            //     Icons.delete,
+            //     color: Color(0xFF4ECF84),
+            //   ),
+            // ),
             // trailing: const Icon(
             //   Icons.delete,
             //   color: Color(0xFF4ECF84),

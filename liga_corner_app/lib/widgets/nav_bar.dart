@@ -15,8 +15,7 @@ class _NavigationExampleState extends State<NavigationExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
-      
+     
 
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
@@ -62,6 +61,7 @@ class _NavigationExampleState extends State<NavigationExample> {
           color: const Color(0xFFE8E8E8),
           alignment: Alignment.center,
           child: MyNotification(),
+          
         ),
         Container(
           color: const Color(0xFFE8E8E8),
